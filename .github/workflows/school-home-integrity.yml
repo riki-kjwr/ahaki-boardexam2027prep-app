@@ -1,0 +1,22 @@
+name: School home integrity
+
+on:
+  push:
+    branches:
+      - feature/school-home-20261122
+  pull_request:
+    paths:
+      - index.html
+      - oniki.html
+      - tests/verify-school-home.mjs
+      - .github/workflows/school-home-integrity.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node tests/verify-school-home.mjs
